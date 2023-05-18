@@ -16,8 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $listcategory = CategoryModel::with('categorymenu')->orderBy('id','DESC')->get();
-        //dd($listcategory);
+        $listcategory = CategoryModel::with('categorymenu')->orderBy('id', 'DESC')->get();
         return view('admin.category.index')->with(compact('listcategory'));
     }
 
@@ -35,7 +34,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,32 +43,22 @@ class CategoryController extends Controller
             [
                 'category_name' => 'required|unique:category|max:250',
                 'slug_category' => 'required|unique:category|max:250',
-                'category_menu' => 'required',
-                'category_desc' => 'required',
-                'category_keywords' => 'required',
                 'trangthai' => 'required',
-
-            ],[
-                'category_name.unique' => 'Tên Danh Mục Đã Có',
-                'slug_category.unique' => 'Slug Danh Mục Đã Có',
-                'category_name.required' => 'Điền Tên Danh Mục',
             ]
         );
         $category = new CategoryModel();
-        $category-> category_name = $data['category_name'];
-        $category-> slug_category = $data['slug_category'];
-        $category-> category_desc = $data['category_desc'];
-        $category-> category_keywords = $data['category_keywords'];
-        $category-> menu_id = $data['category_menu'];
-        $category-> trang_thai = $data['trangthai'];
+        $category->category_name = $data['category_name'];
+        $category->slug_category = $data['slug_category'];
+        $category->trang_thai = $data['trangthai'];
+        $category->menu_id = 0;
         $category->save();
-        return redirect()->back()->with('message','Cap nhap Thành Công');
+        return redirect()->back()->with('message', 'Success');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,61 +69,51 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $editcategory = CategoryModel::find($id);
         $listmenu = Menutype::orderBy('id', 'DESC')->get();
-        return view('admin.category.edit')->with(compact('editcategory','listmenu'));
+        return view('admin.category.edit')->with(compact('editcategory', 'listmenu'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-       
+
         $data = $request->validate(
             [
                 'category_name' => 'required|max:250',
                 'slug_category' => 'required|max:250',
-                'category_menu' => 'required',
-                'category_desc' => 'required',
-                'category_keywords' => 'required',
                 'trangthai' => 'required',
-
-            ],[
-                'category_name.unique' => 'Tên Danh Mục Đã Có',
-                'slug_category.unique' => 'Slug Danh Mục Đã Có',
-                'category_name.required' => 'Điền Tên Danh Mục',
             ]
-            );
-        $category =  CategoryModel::find($id);
-        $category-> category_name = $data['category_name'];
-        $category-> slug_category = $data['slug_category'];
-        $category-> category_desc = $data['category_desc'];
-        $category-> category_keywords = $data['category_keywords'];
-        $category-> menu_id = $data['category_menu'];
-        $category-> trang_thai = $data['trangthai'];
+        );
+        $category = CategoryModel::find($id);
+        $category->category_name = $data['category_name'];
+        $category->slug_category = $data['slug_category'];
+        $category->menu_id = 0;
+        $category->trang_thai = $data['trangthai'];
         $category->save();
-        return redirect()->back()->with('message','Cap nhap Thành Công');
+        return redirect()->back()->with('message', 'Success');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       $categorydelete = CategoryModel::find($id)->delete();
-        return redirect()->back()->with('status','Xóa Thành Công');
+        CategoryModel::find($id)->delete();
+        return redirect()->back()->with('status', 'Delete Success');
     }
 }

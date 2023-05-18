@@ -87,7 +87,7 @@
                     <div class="clearfix"></div>
                 </ul>
                 <div class="clearfix"></div>
-                <a class="order" href="{{ url('/check-out-ajax') }}">Pay </a>
+                <a class="order" href="">Pay </a>
             </div>
         </div>
     </div>

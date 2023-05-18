@@ -1,4 +1,26 @@
 @extends("layouts.user.userlayout")
+
+@push('search')
+    <form autocomplete="off" action="{{ url('/') }}" method="get" style="width: 600px">
+        <div style="display: flex">
+            <div style="width: 200px; padding: 0; margin-right: 10px;">
+                <select class="selectpicker form-control" data-live-search="true" name="category">
+                    <option value=""></option>
+                    @foreach($categorys as $category)
+                        <option value="{{ $category->id }}"
+                                {{ request()->category_id == $category->id ? 'selected' : ''}} data-tokens="mustard">{{ $category->category_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="search"
+                 style="height: 34px;display: flex;justify-content: center;font-palette: dark;align-items: center;">
+                <input type="text" placeholder="Search" id="keywords" name="keywords" class="textbox">
+                <input type="submit" value="Subscribe" id="submit" name="">
+                <div id="search_ajax"></div>
+            </div>
+        </div>
+    </form>
+@endpush
 @section('content')
     <div class="content_top">
         <div class="content_bottom">

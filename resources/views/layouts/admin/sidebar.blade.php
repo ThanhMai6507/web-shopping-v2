@@ -11,50 +11,21 @@
                 <li class="menu-title">
                     <span>Pages</span>
                 </li>
-                <li class="submenu">
-                    <a href="#"> <span> Menu </span> <span class="ti-angle-down"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ route('menu-type.create') }}">Thêm Menu </a></li>
-                        <li><a href="{{ route('menu-type.index') }}">Liệt Kê Menu </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"> <span> Slide </span> <span class="ti-angle-down"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ route('slide.create') }}">Thêm Slide </a></li>
-                        <li><a href="{{ route('slide.index') }}">Liệt Kê Slide </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"> <span> Danh Mục </span> <span class="ti-angle-down"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ route('category.create') }}">Thêm Danh Mục</a></li>
-                        <li><a href="{{ route('category.index') }}">Liệt Danh Mục </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"> <span> Sản Phẩm </span> <span class="ti-angle-down"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ route('product.create') }}">Thêm Sản Phẩm </a></li>
-                        <li><a href="{{ route('product.index') }}">Liệt Sản Phẩm </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"> <span> Mã Giả Giá </span> <span class="ti-angle-down"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ route('coupon.create') }}">Thêm Mã Giảm Giá </a></li>
-                        <li><a href="{{ route('coupon.index') }}">Liệt Mã Giảm Giá </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"> <span> Đơn Hàng </span> <span class="ti-angle-down"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ url('/admin/order') }}"> Đơn Hàng </a></li>
-                        <li><a href="{{ url('/admin/order-done') }}"> Đơn Hàng Hoàn Thành </a></li>
-                        <li><a href="{{ url('/admin/order-faill') }}"> Đơn Hàng Bị Hủy </a></li>
-                    </ul>
-                </li>
 
+                <li class="submenu">
+                    <a href="#"> <span> Category  </span> <span class="ti-angle-down"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{ route('category.create') }}">Add Category</a></li>
+                        <li><a href="{{ route('category.index') }}"> List Category </a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"> <span> Product </span> <span class="ti-angle-down"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{ route('product.create') }}"> Add Product </a></li>
+                        <li><a href="{{ route('product.index') }}"> List Product </a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
