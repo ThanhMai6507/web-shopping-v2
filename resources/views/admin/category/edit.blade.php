@@ -1,7 +1,6 @@
 @extends("layouts.admin.adminlayout")
 @section('content')
 
-
     <div class="row">
 
         <div class="col-12">
@@ -32,58 +31,27 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group">
-                            <label> Tên Danh Mục </label>
+                            <label> Name category </label>
                             <input type="text" name="category_name" value="{{ $editcategory->category_name }}"
-                                onkeyup="ChangeToSlug()" id="slug" class="form-control">
+                                   onkeyup="ChangeToSlug()" id="slug" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label> Slug Danh Mục </label>
+                            <label> Slug </label>
                             <input type="text" name="slug_category" value="{{ $editcategory->slug_category }}"
-                                id="convert_slug" class="form-control">
+                                   id="convert_slug" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label> Mô Tả Danh Mục </label>
-                            <input type="text" name="category_desc" value="{{ $editcategory->category_desc }}"
-                                class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label> TỪ Khóa Danh Mục </label>
-                            <input type="text" name="category_keywords" value="{{ $editcategory->category_keywords }}"
-                                class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label> Thuộc Menu </label><br />
-                            <select name="category_menu" class="form-control">
-                                <option value="0">Không Thuộc Menu Nào</option>
-                                @foreach ($listmenu as $key => $lisnu)
-                                    <option {{ $lisnu->id == $editcategory->menu_id ? 'selected' : '' }}
-                                        value="{{ $lisnu->id }} ">{{ $lisnu->menu_type }} </option>
-                                @endforeach
-                            </select>
-
-                        </div>
-                        <div class="form-group">
-                            <label>Trạng Thái </label><br />
+                            <label> Status </label><br/>
                             <select name="trangthai" class="form-control">
-                                @if ($editcategory->Trang_Thai == 0)
-                                    <option selected value="0">Hiển</option>
-                                    <option value="1">Ẩn </option>
-                                @else
-                                    <option value="0">Hiển</option>
-                                    <option selected value="1">Ẩn </option>
-                                @endif
+                                <option {{ $editcategory->Trang_Thai == 0 ?  'selected': '' }}  value="0"> Public</option>
+                                <option {{ $editcategory->Trang_Thai == 1 ?  'selected': '' }} value="1"> Private</option>
                             </select>
-
                         </div>
-                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
             </div>
-
-            <!-- /General -->
-
         </div>
     </div>
-
 
 @endsection

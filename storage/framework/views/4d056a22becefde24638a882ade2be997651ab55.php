@@ -5,14 +5,13 @@
                 <select class="selectpicker form-control" data-live-search="true" name="category">
                     <option value=""></option>
                     <?php $__currentLoopData = $categorys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($category->id); ?>"
-                                <?php echo e(request()->category_id == $category->id ? 'selected' : ''); ?> data-tokens="mustard"><?php echo e($category->category_name); ?></option>
+                        <option value="<?php echo e($category->id); ?>" <?php echo e(request()->category == $category->id ? 'selected' : ''); ?> ><?php echo e($category->category_name); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
             <div class="search"
                  style="height: 34px;display: flex;justify-content: center;font-palette: dark;align-items: center;">
-                <input type="text" placeholder="Search" id="keywords" name="keywords" class="textbox">
+                <input type="text" placeholder="Search" id="keywords" name="keywords" class="textbox" value="<?php echo e(old('keywords', request()->keywords)); ?>">
                 <input type="submit" value="Subscribe" id="submit" name="">
                 <div id="search_ajax"></div>
             </div>

@@ -7,14 +7,13 @@
                 <select class="selectpicker form-control" data-live-search="true" name="category">
                     <option value=""></option>
                     @foreach($categorys as $category)
-                        <option value="{{ $category->id }}"
-                                {{ request()->category_id == $category->id ? 'selected' : ''}} data-tokens="mustard">{{ $category->category_name }}</option>
+                        <option value="{{ $category->id }}" {{ request()->category == $category->id ? 'selected' : ''}} >{{ $category->category_name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="search"
                  style="height: 34px;display: flex;justify-content: center;font-palette: dark;align-items: center;">
-                <input type="text" placeholder="Search" id="keywords" name="keywords" class="textbox">
+                <input type="text" placeholder="Search" id="keywords" name="keywords" class="textbox" value="{{ old('keywords', request()->keywords)}}">
                 <input type="submit" value="Subscribe" id="submit" name="">
                 <div id="search_ajax"></div>
             </div>

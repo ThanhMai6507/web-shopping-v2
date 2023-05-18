@@ -30,26 +30,26 @@
                     <form action="{{ route('category.store') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label> Tên Danh Muc </label>
+                            <label> Category name </label>
                             <input type="text" name="category_name" value="{{old('category_name')}}"
                                    onkeyup="ChangeToSlug()" id="slug"
                                    class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Slug Danh Muc </label>
+                            <label>Slug </label>
                             <input type="text" name="slug_category" value="{{old('slug_category')}}" id="convert_slug"
                                    class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label>Trang Thai</label><br/>
+                            <label> Status </label><br/>
                             <select name="trangthai" value="{{old('trangthai')}}" class="form-control">
-                                <option value="0">Hiện</option>
-                                <option value="1">Ẩn</option>
+                                <option value="0"> Public </option>
+                                <option value="1"> Private </option>
                             </select>
 
                         </div>
-                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="submit" class="btn btn-primary"> Add </button>
                     </form>
                 </div>
             </div>
